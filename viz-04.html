@@ -1,0 +1,62 @@
+<!doctype html>
+<html lang="es">
+
+<head>
+    <meta charset="utf-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+    <title>Casos por mes</title>
+</head>
+
+<body>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+    <script>
+        var data;
+
+        function preload(){
+          data = loadTable("https://raw.githubusercontent.com/tiarekth/Ejercicio-final-3-agosto/gh-pages/nuevo%20fem.csv","csv","header");
+        }
+
+        function setup() {
+            var canvas = createCanvas(windowWidth, 500);
+            canvas.position(0, 0)
+            smooth();
+            noLoop();
+            print(data);
+            print(data.getRowCount());
+            noStroke();
+        }
+
+        function draw() {
+          background(255,255,255);
+            var mes = data.getRowCount();
+            for (var a = 0; a < mes; a++) {
+              var cantidad = data.get(a, 1);
+              var nombre_mes = data.get(a, 0);
+                translate(55, 0);
+                
+                
+                
+              if (cantidad > 0){
+
+                  
+                  fill(0);
+                textAlign(CENTER);
+                textSize(13);
+                text(nombre_mes,(width/mes/1.5)*a,height/2)
+                  
+              }
+              fill(204,0,0,map(cantidad,0,10,75,150));
+              ellipse((width/mes/1.5)*a,height/2,2*(cantidad+1),2*(cantidad+1));
+                
+            
+            }
+        }
+
+        function windowResized() {
+            resizeCanvas(windowWidth, 500);
+        }
+    </script>
+</body>
+
+</html>

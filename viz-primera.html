@@ -1,0 +1,83 @@
+<!doctype html>
+<html lang="es">
+   <head>
+      <meta charset="utf-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+      <title>Primera</title>
+   </head>
+   <body>
+      <!--Nada más que p5.js para dibujar en el body de esta página-->
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/p5.min.js"></script>
+      <script src="https://cdnjs.cloudflare.com/ajax/libs/p5.js/0.6.0/addons/p5.dom.min.js"></script>
+      <script>
+         //más de 1 victimas
+         
+         var femicidios = [
+            {
+               region:"Antofagasta",
+               victimas:2,
+               year_victimas:2017
+               
+            },
+            {
+               region:"Coquimbo",
+               victimas:5,
+               year_victimas:2017
+            },
+            {
+               region:"Valparaíso",
+               victimas:5,
+               year_victimas:2017
+            },
+            {
+               region:"Metropolitana ",
+               victimas:20,
+               year_victimas:2017
+            },
+            {
+               region:"O'Higgins",
+               victimas:6,
+               year_victimas:2017
+            },
+            {
+               region:"Bío Bío",
+               victimas:8,
+               year_victimas:2017
+            },
+            {
+               region:"Araucanía",
+               victimas:4,
+               year_victimas:2017
+            },
+            {
+              region:"Aysén",
+              victimas: 3,
+               year_victimas:2017
+            }
+        
+         ]
+         
+         function setup(){
+           var canvas = createCanvas(windowWidth,500);
+           canvas.position(0,0)
+           noStroke();
+           smooth();
+           noLoop();
+         }
+         function draw(){
+           background(255,130,120);
+           textAlign(CENTER);
+            for (var a = 0; a < femicidios.length; a++){
+             textSize(12);
+             fill(160,25,0);  
+             text(femicidios[a].region, width/(femicidios.length+1)*(a+1), height/1.8);
+             textSize(7 * femicidios[a].victimas);
+             text(femicidios[a].victimas, width/(femicidios.length+1)*(a+1), height/2);
+            }
+         } 
+         function windowResized() {
+           resizeCanvas(windowWidth, 500);
+         }   
+      </script>
+   </body>
+</html>
